@@ -1,13 +1,13 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.random.*;
+import java.util.Random;
 public class menu {
 static Scanner menuinp = new Scanner(System.in);
 static byte[] map; 
-
+static Random r =new Random();
 static ArrayList<String> prv = new ArrayList<String>();
 
-
+// Main menu controller that controls the discision flow throughout the program
     static void MM() {
         System.out.println(
         "please choose an option by entering a number\n"+
@@ -17,6 +17,7 @@ static ArrayList<String> prv = new ArrayList<String>();
         "4 to Clean Exit"
         );
         int ans = menuinp.nextInt();
+        // fairly simple Data validation with recursion
         try {
          if (ans <= 4 && ans > 0) {
             System.out.println("Routing you to your menu. \n");
@@ -41,9 +42,12 @@ static ArrayList<String> prv = new ArrayList<String>();
                 if (ans <= 225 && ans > 0) {
                    System.out.println("accepted \n");
                    menuinp.nextLine();
+
+                   // this uses and Array list to store a constant and a random number which is then converted to the map seed which is then saved
                    for (int i = 0; i < (ans-1); i++) {
-                    prv.add("ans" + ans/System.currentTimeMillis());
+                    prv.add(("ans"+ans*r.nextInt(2000)));
                    }
+                map =prv.toString().getBytes();
                 }
                 else{
                 throw new IndexOutOfBoundsException(1);
